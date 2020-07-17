@@ -1,52 +1,32 @@
 import {
-    FETCH_SMURFS_START,
-    FETCH_SMURFS_SUCCESS,
-    FETCH_SMURFS_FAILURE
+    FETCH_SMURFS,
+    HANDLE_CHANGE
   } from '../actions/actionsIndex.js';
-  
 
 const initialState = {
-    isLoading: false,
-    smurfs: [
-        {
-            name: 'Brainey',
-            age: 200,
-            height: '5cm',
-            id: 0
-          }
-    ],
-    error: ""
-};
-
-// let smurfs = [
-//     {
-//       name: 'Brainey',
-//       age: 200,
-//       height: '5cm',
-//       id: 0
-//     }
-//   ];
+    smurfs: [],
+    newSmurf: {
+        name: '',
+        age: '',
+        height: ''
+    }
+}
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_SMURFS_START:
+        case FETCH_SMURFS:
             return {
                 ...state,
-                isLoading: true
-            };
-        case FETCH_SMURFS_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
                 smurfs: action.payload,
-                error: ""
             };
-        case FETCH_SMURFS_FAILURE:
+        case HANDLE_CHANGE:
             return {
                 ...state,
-                isLoading: false,
-                error: action.payload
-            };
+                newSmurf: {
+                    ...state.newSmurf,
+                    [action.payload.target.name]: action.payload.target.value
+                }
+            }
         default:
             return state;
     }
