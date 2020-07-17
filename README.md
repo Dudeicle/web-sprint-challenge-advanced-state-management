@@ -24,10 +24,24 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. What problem does the context API help solve?
+
+The problem context API solves is that it allows us to avoid sending state down through props, which in larger projects can become a nightmare quickly.
+
 2. In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Store is a single location where state is managed and accessible by all components. Reducers will take in initial state and create “cases” which will alter state or pieces of state when called. Actions will be the actions that the user can do to interact with the application, this action could be an axios.get that then uses reducers under different circumstances.
+
 3. What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application State is when state is managed at a high level and then made accessible at lower component levels. Component state is when the state is managed locally in that individual component. App State makes more sense as the size of a project scales up and managing state on the component level becomes more difficult.
+
 4. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux-thunk is a function returned by another function, Redux-thunk allows us to run async API calls. Thunk is a middleware package. This will effect our action creators by allows them to return functions rather than just actions.
+
 5. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+I think my favorite state management is Redux with reducers and actions, because it makes most sense to me. I think when I understand createStore and context better that will be my favorite. But where one method ends and another begins has somewhat burred together for me.
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade. 
 
