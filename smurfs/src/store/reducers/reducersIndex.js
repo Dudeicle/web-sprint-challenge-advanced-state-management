@@ -1,6 +1,7 @@
 import {
     FETCH_SMURFS,
-    HANDLE_CHANGE
+    HANDLE_CHANGE,
+    HANDLE_SUBMIT
   } from '../actions/actionsIndex.js';
 
 const initialState = {
@@ -26,6 +27,11 @@ export const reducer = (state = initialState, action) => {
                     ...state.newSmurf,
                     [action.payload.target.name]: action.payload.target.value
                 }
+            }
+        case HANDLE_SUBMIT:
+            return {
+                ...state,
+                smurfs: [...state.smurfs, action.payload]
             }
         default:
             return state;

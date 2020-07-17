@@ -5,7 +5,6 @@ export const fetchSmurfs = () => {
     return dispatch => {
         axios.get(`http://localhost:3333/smurfs`)
             .then(res => {
-                console.log(res)
                 dispatch({ type: FETCH_SMURFS, payload: res.data })
             })
             .catch(err => {
@@ -22,4 +21,18 @@ export const handleChange = (event) => {
     }
 }
 
+export const HANDLE_SUBMIT = "HANDLE_SUBMIT";
+export const handleSubmit = (n, a, h) => {
+    return dispatch => {
+        axios.post(`http://localhost:3333/smurfs`, {
+            name: n, age: a, height: h
+        })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => {
+                console.log('this is the post request error in actions', err)
+            })
 
+    }
+}
