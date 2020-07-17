@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { bindActionCreators } from 'redux';
 
 export const FETCH_SMURFS = "FETCH_SMURFS";
 export const fetchSmurfs = () => {
@@ -22,13 +23,16 @@ export const handleChange = (event) => {
 }
 
 export const HANDLE_SUBMIT = "HANDLE_SUBMIT";
-export const handleSubmit = (n, a, h) => {
+export const handleSubmit = (name, age, height) => {
     return dispatch => {
         axios.post(`http://localhost:3333/smurfs`, {
-            name: n, age: a, height: h
+            name: name,
+            age: age,
+            height: height
         })
             .then(res => {
                 console.log(res)
+                dispatch({ type: HANDLE_SUBMIT, payload: res.data })
             })
             .catch(err => {
                 console.log('this is the post request error in actions', err)
